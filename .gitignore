@@ -1,0 +1,4 @@
+/.vs/Overtime/v14/*.suo
+/Overtime/obj/Debug/*.cache
+/Overtime/bin/Debug/Overtime.exe.config
+/Overtime/bin/Debug/Overtime.vshost.exe.config
