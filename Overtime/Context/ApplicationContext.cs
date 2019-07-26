@@ -12,7 +12,13 @@ namespace Overtime.Context
     class ApplicationContext : DbContext
     {
         public ApplicationContext() : base("Overtime") { }
-
+        
+        public DbSet<Department>  Departments { get; set; }
+        
+        public DbSet<User> Users { get; set; }
+        
+        public DbSet <OvertimeType> OvertimeTypes { get; set; }
+        
         public DbSet<Site> Sites { get; set; } 
 
         public DbSet<Employee> Employees { get; set; }
