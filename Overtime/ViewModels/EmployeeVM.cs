@@ -18,25 +18,25 @@ namespace Overtime.ViewModels
         public int DepartmentId { get; set; }
 
         public EmployeeVM() { } // constructor
-        public EmployeeVM(string name, string phonenumber, string gender, string address, int salary, int managerid, int departmentid)
+        public EmployeeVM(string name, string phonenumber, string gender, string address, int salary, int managerId, int departmentid)
         {
             this.Name = name;
             this.PhoneNumber = phonenumber;
             this.Gender = gender;
             this.Address = address;
             this.Salary = salary;
-            this.ManagerId = managerid;
+            this.ManagerId = managerId;
             this.DepartmentId = departmentid;
         }
 
-        public void Update(string name, string phonenumber, string gender, string address, int salary, int managerid, int departmentid)
+        public void Update(string name, string phonenumber, string gender, string address, int salary, int managerId, int departmentid)
         {
             this.Name = name;
             this.PhoneNumber = phonenumber;
             this.Gender = gender;
             this.Address = address;
             this.Salary = salary;
-            this.ManagerId = managerid;
+            this.ManagerId = managerId;
             this.DepartmentId = departmentid;
         }
     }

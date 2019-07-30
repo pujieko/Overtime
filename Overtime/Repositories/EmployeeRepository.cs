@@ -16,6 +16,8 @@ namespace Overtime.Repositories
         bool status = false;
         // constructor
         ApplicationContext applicationContext = new ApplicationContext();
+        private object departmentsVM;
+
         public bool Delete(int id)
         {
             var get = Get(id);
@@ -35,7 +37,7 @@ namespace Overtime.Repositories
         public List<Employee> Get()
         {
             // context dulu, name table, kondisi
-            var get = applicationContext.Employees.Where(x => x.IsDelete == false).ToList();
+            var get = applicationContext.Employees.Include("Manager").Include("Department").Where(x => x.IsDelete == false).ToList();
             return get;
         }
 
@@ -54,8 +56,10 @@ namespace Overtime.Repositories
         public bool Insert(EmployeeVM employeeVM)
         {
             var push = new Employee(employeeVM);
-            //var getDepartment = applicationContext.Departments.SingleOrDefault(x => x.IsDelete == false && x.Id == departmentsVM.DepartmentId);
-            //push.Department = getDepartment;
+            var getManager = applicationContext.Employees.SingleOrDefault(x => x.IsDelete == false && x.Id == employeeVM.ManagerId);
+            push.Manager = getManager;
+            var getDepartment = applicationContext.Departments.SingleOrDefault(x => x.IsDelete == false && x.Id == employeeVM.DepartmentId);
+            push.Department = getDepartment;
             applicationContext.Employees.Add(push);
             var result = applicationContext.SaveChanges();
             return result > 0;
@@ -68,6 +72,10 @@ namespace Overtime.Repositories
             if(get != null)
             {
                 get.Update(employeeVM);
+                var getManager = applicationContext.Employees.SingleOrDefault(x => x.IsDelete == false && x.Id == employeeVM.ManagerId);
+                get.Manager = getManager;
+                var getDepartment = applicationContext.Departments.SingleOrDefault(x => x.IsDelete == false && x.Id == employeeVM.DepartmentId);
+                get.Department = getDepartment;
                 applicationContext.Entry(get).State = EntityState.Modified;
                 var result = applicationContext.SaveChanges();
                 return result > 0;

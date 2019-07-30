@@ -18,6 +18,7 @@ namespace Overtime.Models
             this.Gender = employeeVM.Gender;
             this.Address = employeeVM.Address;
             this.Salary = employeeVM.Salary;
+            //this.Manager = employeeVM.Manager;
             this.CreateDate = DateTimeOffset.Now.LocalDateTime;
         }
 
@@ -28,6 +29,7 @@ namespace Overtime.Models
             this.Gender = employeeVM.Gender;
             this.Address = employeeVM.Address;
             this.Salary = employeeVM.Salary;
+            //this.Manager = employeeVM.ManagerId;
             this.UpdateDate = DateTimeOffset.Now.LocalDateTime;
 
         }
@@ -36,12 +38,12 @@ namespace Overtime.Models
             this.IsDelete = true;
             this.DeleteDate = DateTimeOffset.Now.LocalDateTime;
         }
-        public string Name { get; internal set; }
+        public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
         public int Salary { get; set; }
         public Employee Manager { get; set; }
-        //public Employee Department { get; set; }
+        public Department Department { get; set; }
     }
 }
