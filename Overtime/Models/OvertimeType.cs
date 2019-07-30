@@ -11,7 +11,7 @@ namespace Overtime.Models
      public class OvertimeType : BaseModel
     {
         public string Name { get; set; }
-        public DateTime? StartAvailable { get; set; }
+        public string StartAvailable { get; set; }
 
         public OvertimeType() { }
         public OvertimeType(OvertimeTypeVM overtimetypeVM)

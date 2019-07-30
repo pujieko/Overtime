@@ -9,15 +9,15 @@ namespace Overtime.ViewModels
     public class OvertimeTypeVM
     {
         public string Name { get; set; }
-        public DateTime? StartAvailable { get; set; }
+        public string StartAvailable { get; set; }
 
         public OvertimeTypeVM() { }
-        public OvertimeTypeVM(string name, DateTime? startavailable)
+        public OvertimeTypeVM(string name, string startavailable)
         {
             this.Name = name;
             this.StartAvailable = startavailable;
         }
-        public void Update(string name, DateTime? startavailable ) // Pembuatan Constructor untuk Update
+        public void Update(string name, string startavailable ) // Pembuatan Constructor untuk Update
         {
             this.Name = name;
             this.StartAvailable = startavailable;

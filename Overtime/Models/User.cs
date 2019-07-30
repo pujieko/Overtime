@@ -14,6 +14,7 @@ namespace Overtime.Models
     {
         public string Email { get; set; }
         public string Password { get; set; }
+        public Role Role { get; set; } //<<<<< UNTUK MEMBUAT RELASI FOREIGN KEY KE TABLE ROLE
         public User() { }
         public User(UserVM userVM)//Pembuatan constructor untuk insert
         {

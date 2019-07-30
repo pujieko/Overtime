@@ -15,5 +15,7 @@ namespace Overtime.Context
       public DbSet<Department>  Departments { get; set; }
       public DbSet<User> Users { get; set; }
       public DbSet <OvertimeType> OvertimeTypes { get; set; }
+      public DbSet<Role> Roles { get; set; }
+      public DbSet<RequestDetail> RequestDetails { get; set; }
     }
 }

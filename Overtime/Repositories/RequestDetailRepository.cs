@@ -11,53 +11,53 @@ using System.Threading.Tasks;
 
 namespace Overtime.Repositories
 {
-    public class UserRepository : IUserRepository
+    public  class RequestDetailRepository : IRequestDetailRepository
     {
         bool status = false;
         //Membuat Objek
         ApplicationContext applicationContext = new ApplicationContext();
-        private UserVM userVM;
-        public List<User> Get()//Get all
+        private RequestDetailVM requestdetailVM;
+        public List<RequestDetail> Get()//Get all
         {
-            var get = applicationContext.Users.Include("Role").Where(x => x.IsDelete == false).ToList(); //<< JOIN TABLE ROLE
+            var get = applicationContext.RequestDetails.Include("OvertimeRequest").Where(x => x.IsDelete == false).ToList(); //<< JOIN TABLE OvertimeRequest
             return get; //Contextnya,nama table, kondisi
         }
-        public List<User> Get(string value)//Get by Value String
+        public List<RequestDetail> Get(string value)//Get by Value String
         {
-            var get = applicationContext.Users.Where(x => (x.Email.Contains(value) || x.Id.ToString().Contains(value)) && x.IsDelete == false).ToList();
+            var get = applicationContext.RequestDetails.Where(x => (x.StartTime.Contains(value) || x.EndTime.Contains(value) || x.Activity.Contains(value) || x.Id.ToString().Contains(value)) && x.IsDelete == false).ToList();
             return get;
         }
-        public User Get(int id)//Get by Id
+        public RequestDetail Get(int id)//Get by Id
         {
-            var get = applicationContext.Users.SingleOrDefault(x => x.IsDelete == false && x.Id == id);
+            var get = applicationContext.RequestDetails.SingleOrDefault(x => x.IsDelete == false && x.Id == id);
             return get;
         }
-        public bool Insert(UserVM userVM)
+        public bool Insert(RequestDetailVM requestdetailVM)
         {
-            var push = new User(userVM);
-            var getRole = applicationContext.Roles.SingleOrDefault(x => x.IsDelete == false && x.Id == userVM.RoleId);
-            push.Role = getRole;
-            applicationContext.Users.Add(push);
+            var push = new RequestDetail(requestdetailVM);
+            //var getOvertimeRequest = applicationContext.OvertimeRequests.SingleOrDefault(x => x.IsDelete == false && x.Id == requestdetailVM.OvertimeRequestId);
+            //push.OvertimeRequest = getOvertimeRequest;
+            applicationContext.RequestDetails.Add(push);
             var result = applicationContext.SaveChanges();
             return result > 0;
         }
-        public bool Update(int id, UserVM userVM)
+        public bool Update(int id, RequestDetailVM requestdetailVM)
+        //=================================================
         // {
         //Untuk mengambil data By Id  sebelum di Update
         //   var get = Get(id);
-        // get.Update(userVM);
+        // get.Update(requestdetailVM);
         // applicationContext.Entry(get).State = EntityState.Modified;
         // var result = applicationContext.SaveChanges();
         // return result > 0;
         // }
+        //=================================================
         {
             //Untuk mengambil data By Id
             var get = Get(id);
             if (get != null)
             {
-                var getRole = applicationContext.Roles.SingleOrDefault(x => x.IsDelete == false && x.Id == userVM.RoleId);
-                get.Role = getRole;
-                get.Update(userVM);
+                get.Update(requestdetailVM);
                 applicationContext.Entry(get).State = EntityState.Modified;
                 var result = applicationContext.SaveChanges();
                 return result > 0;
@@ -82,5 +82,6 @@ namespace Overtime.Repositories
                 return false;
             }
         }
+
     }
 }

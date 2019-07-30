@@ -8,7 +8,6 @@ using Overtime.Models;
 using Overtime.ViewModels;
 using Overtime.Context;
 using System.Data.Entity;
-
 namespace Overtime.Repositories
 {
     public class DepartmentRepository : IDepartmentRepository
@@ -44,7 +43,6 @@ namespace Overtime.Repositories
             var result = applicationContext.SaveChanges();
             return result > 0;
         }
-
         public bool Update(int id, DepartmentVM departmentVM)
         {
             //Untuk mengambil data By Id
