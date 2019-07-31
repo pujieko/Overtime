@@ -43,6 +43,14 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -58,17 +66,44 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\OvertimeTypeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Migrations\201907241002502_addmodulesite.cs" />
     <Compile Include="Migrations\201907241002502_addmodulesite.Designer.cs">
+    <Compile Include="Migrations\201907260048514_addingUserOvertimeTypeDepartment.cs" />
+    <Compile Include="Migrations\201907260048514_addingUserOvertimeTypeDepartment.Designer.cs">
+      <DependentUpon>201907260048514_addingUserOvertimeTypeDepartment.cs</DependentUpon>
+    </Compile>
       <DependentUpon>201907241002502_addmodulesite.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201907250948399_addingemployee.cs" />
@@ -98,6 +133,17 @@
     <Compile Include="ViewModels\EmployeeVM.cs" />
     <Compile Include="ViewModels\RoleVM.cs" />
     <Compile Include="ViewModels\SiteVM.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\OvertimeType.cs" />
+    <Compile Include="Repositories\DepartmentRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDepartmentRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IOvertimeTypeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
+    <Compile Include="Repositories\OvertimeTypeRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="ViewModels\DepartmentVM.cs" />
+    <Compile Include="ViewModels\OvertimeTypeVM.cs" />
+    <Compile Include="ViewModels\UserVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,6 +160,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Site.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -129,7 +177,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201907241002502_addmodulesite.resx">
+    <EmbeddedResource Include="Migrations\201907260048514_addingUserOvertimeTypeDepartment.resx">
+      <DependentUpon>201907260048514_addingUserOvertimeTypeDepartment.cs</DependentUpon>
+        <EmbeddedResource Include="Migrations\201907241002502_addmodulesite.resx">
       <DependentUpon>201907241002502_addmodulesite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907250948399_addingemployee.resx">

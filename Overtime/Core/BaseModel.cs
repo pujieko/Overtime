@@ -11,7 +11,7 @@ namespace Overtime.Core
     {
         [Key]
         public int Id { get; set; }
-
+      
         public DateTimeOffset CreateDate { get; set; }
         public DateTimeOffset UpdateDate { get; set; }
         public DateTimeOffset DeleteDate { get; set; }

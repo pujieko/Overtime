@@ -8,15 +8,14 @@ namespace Overtime.ViewModels
 {
     public class RoleVM
     {
-        public string Name { get; internal set; }
+        public string Name { get; set; }
 
-        public RoleVM() { } //consctructor
-        public RoleVM(string name)
+        public RoleVM() { }
+        public RoleVM(string name) // Pembuatan construct
         {
             this.Name = name;
         }
-
-        public void Update(string name)
+        public void Update(string name) // Pembuatan Constructor untuk Update
         {
             this.Name = name;
         }
