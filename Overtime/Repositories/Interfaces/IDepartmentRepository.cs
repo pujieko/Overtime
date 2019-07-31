@@ -17,6 +17,6 @@ namespace Overtime.Repositories.Interfaces
         bool Insert(DepartmentVM departmentVM);
         bool Update(int id, DepartmentVM departmentVM);
         bool Delete(int id);
-
     }
 }
+

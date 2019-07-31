@@ -13,6 +13,11 @@ namespace Overtime.Controllers
     public class DepartmentsController
     {
         IDepartmentRepository iDepartmentRepository = new DepartmentRepository();
+
+
+
+
+
         
         public List<Department> Get() //Method untuk menampilkan data keseluruhan
         {
@@ -27,14 +32,17 @@ namespace Overtime.Controllers
             return iDepartmentRepository.Get(value);
 
         }
+
         public bool Insert(DepartmentVM departmentVM)
         {
             return iDepartmentRepository.Insert(departmentVM);
         }
+
         public bool Update(int id, DepartmentVM departmentVM)
         {
             return iDepartmentRepository.Update(id, departmentVM);
         }
+
         public bool Delete(int id)
         {
             return iDepartmentRepository.Delete(id);

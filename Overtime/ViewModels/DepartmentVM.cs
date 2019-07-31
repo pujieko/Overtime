@@ -20,5 +20,5 @@ namespace Overtime.ViewModels
             this.Name = name;
         }
     }
-   
 }
+
