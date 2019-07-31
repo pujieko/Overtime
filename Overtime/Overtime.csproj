@@ -43,6 +43,10 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -64,9 +68,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\ApprovementsController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
+    <Compile Include="Controllers\OvertimeRequestsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201907241002502_addmodulesite.cs" />
     <Compile Include="Migrations\201907241002502_addmodulesite.Designer.cs">
       <DependentUpon>201907241002502_addmodulesite.cs</DependentUpon>
@@ -87,17 +98,65 @@
     <Compile Include="Migrations\201907260858102_updateforeignEmployee1.Designer.cs">
       <DependentUpon>201907260858102_updateforeignEmployee1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907281159562_addingmoduledepartment.cs" />
+    <Compile Include="Migrations\201907281159562_addingmoduledepartment.Designer.cs">
+      <DependentUpon>201907281159562_addingmoduledepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907281413569_addingmoduleOvertimeRequest.cs" />
+    <Compile Include="Migrations\201907281413569_addingmoduleOvertimeRequest.Designer.cs">
+      <DependentUpon>201907281413569_addingmoduleOvertimeRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290146160_updatedatabaseEmployee.cs" />
+    <Compile Include="Migrations\201907290146160_updatedatabaseEmployee.Designer.cs">
+      <DependentUpon>201907290146160_updatedatabaseEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290420243_updatedatabaseEmployeeManager.cs" />
+    <Compile Include="Migrations\201907290420243_updatedatabaseEmployeeManager.Designer.cs">
+      <DependentUpon>201907290420243_updatedatabaseEmployeeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290730049_addingmoduleOvertimeRequests.cs" />
+    <Compile Include="Migrations\201907290730049_addingmoduleOvertimeRequests.Designer.cs">
+      <DependentUpon>201907290730049_addingmoduleOvertimeRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290857494_addingmoduleOvertimeRequests1.cs" />
+    <Compile Include="Migrations\201907290857494_addingmoduleOvertimeRequests1.Designer.cs">
+      <DependentUpon>201907290857494_addingmoduleOvertimeRequests1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.cs" />
+    <Compile Include="Migrations\201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.Designer.cs">
+      <DependentUpon>201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907301103245_addingmoduleApprovement.cs" />
+    <Compile Include="Migrations\201907301103245_addingmoduleApprovement.Designer.cs">
+      <DependentUpon>201907301103245_addingmoduleApprovement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Approvement.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\OvertimeRequest.cs" />
+    <Compile Include="Repositories\ApprovementRepository.cs" />
+    <Compile Include="Repositories\DepartmentRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IApprovementRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDepartmentRepository.cs" />
     <Compile Include="Repositories\Interfaces\IEmployeeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IOvertimeRequestRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRoleRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISiteRepository.cs" />
+    <Compile Include="Repositories\OvertimeRequestRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\SiteRepository.cs" />
+    <Compile Include="ViewModels\ApprovementVM.cs" />
+    <Compile Include="ViewModels\DepartmentVM.cs" />
     <Compile Include="ViewModels\EmployeeVM.cs" />
+    <Compile Include="ViewModels\OvertimeRequestVM.cs" />
     <Compile Include="ViewModels\RoleVM.cs" />
     <Compile Include="ViewModels\SiteVM.cs" />
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,6 +202,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907260858102_updateforeignEmployee1.resx">
       <DependentUpon>201907260858102_updateforeignEmployee1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907281159562_addingmoduledepartment.resx">
+      <DependentUpon>201907281159562_addingmoduledepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907281413569_addingmoduleOvertimeRequest.resx">
+      <DependentUpon>201907281413569_addingmoduleOvertimeRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290146160_updatedatabaseEmployee.resx">
+      <DependentUpon>201907290146160_updatedatabaseEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290420243_updatedatabaseEmployeeManager.resx">
+      <DependentUpon>201907290420243_updatedatabaseEmployeeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290730049_addingmoduleOvertimeRequests.resx">
+      <DependentUpon>201907290730049_addingmoduleOvertimeRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290857494_addingmoduleOvertimeRequests1.resx">
+      <DependentUpon>201907290857494_addingmoduleOvertimeRequests1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.resx">
+      <DependentUpon>201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301103245_addingmoduleApprovement.resx">
+      <DependentUpon>201907301103245_addingmoduleApprovement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
