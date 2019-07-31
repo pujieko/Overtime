@@ -27,10 +27,7 @@ namespace Overtime.Repositories
 
         public List<Department> Get(string value)//Get by Value String
         {
-
             var get = applicationContext.Departments.Where(x => (x.Name.Contains(value) || x.Id.ToString().Contains(value)) && x.IsDelete == false).ToList();
-
-
             return get;
         }
 
@@ -52,9 +49,7 @@ namespace Overtime.Repositories
         {
             //Untuk mengambil data By Id
             var get = Get(id);
-
             if (get != null)
-
             {
                 get.Update(departmentVM);
                 applicationContext.Entry(get).State = EntityState.Modified;
@@ -70,9 +65,7 @@ namespace Overtime.Repositories
         public bool Delete(int id)
         {
             var get = Get(id);
-
             if (get != null)
-
             {
                 get.Delete(); // Parsing
                 applicationContext.Entry(get).State = EntityState.Modified;
@@ -86,4 +79,3 @@ namespace Overtime.Repositories
         }
     }
 }
-

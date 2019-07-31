@@ -14,23 +14,19 @@ namespace Overtime.Controllers
     {
         IDepartmentRepository iDepartmentRepository = new DepartmentRepository();
 
-
-
-
-
-        
-        public List<Department> Get() //Method untuk menampilkan data keseluruhan
+        public List<Department> Get()
         {
             return iDepartmentRepository.Get();
         }
-        public Department Get(int id) //Method untuk menampilkan berdasarkan ID
+
+        public Department Get(int id)
         {
             return iDepartmentRepository.Get(id);
         }
-        public List<Department> Get(string value) //Method untuk menampilkan data sesuai dengan nilai yang dicari
+
+        public List<Department> Get(string value)
         {
             return iDepartmentRepository.Get(value);
-
         }
 
         public bool Insert(DepartmentVM departmentVM)

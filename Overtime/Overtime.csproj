@@ -43,12 +43,8 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -66,44 +62,24 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xceed.Wpf.Toolkit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\ApprovementsController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
-    <Compile Include="Controllers\OvertimeTypeController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
+    <Compile Include="Controllers\OvertimeRequestsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201907241002502_addmodulesite.cs" />
     <Compile Include="Migrations\201907241002502_addmodulesite.Designer.cs">
-    <Compile Include="Migrations\201907260048514_addingUserOvertimeTypeDepartment.cs" />
-    <Compile Include="Migrations\201907260048514_addingUserOvertimeTypeDepartment.Designer.cs">
-      <DependentUpon>201907260048514_addingUserOvertimeTypeDepartment.cs</DependentUpon>
-    </Compile>
       <DependentUpon>201907241002502_addmodulesite.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201907250948399_addingemployee.cs" />
@@ -122,28 +98,65 @@
     <Compile Include="Migrations\201907260858102_updateforeignEmployee1.Designer.cs">
       <DependentUpon>201907260858102_updateforeignEmployee1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907281159562_addingmoduledepartment.cs" />
+    <Compile Include="Migrations\201907281159562_addingmoduledepartment.Designer.cs">
+      <DependentUpon>201907281159562_addingmoduledepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907281413569_addingmoduleOvertimeRequest.cs" />
+    <Compile Include="Migrations\201907281413569_addingmoduleOvertimeRequest.Designer.cs">
+      <DependentUpon>201907281413569_addingmoduleOvertimeRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290146160_updatedatabaseEmployee.cs" />
+    <Compile Include="Migrations\201907290146160_updatedatabaseEmployee.Designer.cs">
+      <DependentUpon>201907290146160_updatedatabaseEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290420243_updatedatabaseEmployeeManager.cs" />
+    <Compile Include="Migrations\201907290420243_updatedatabaseEmployeeManager.Designer.cs">
+      <DependentUpon>201907290420243_updatedatabaseEmployeeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290730049_addingmoduleOvertimeRequests.cs" />
+    <Compile Include="Migrations\201907290730049_addingmoduleOvertimeRequests.Designer.cs">
+      <DependentUpon>201907290730049_addingmoduleOvertimeRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290857494_addingmoduleOvertimeRequests1.cs" />
+    <Compile Include="Migrations\201907290857494_addingmoduleOvertimeRequests1.Designer.cs">
+      <DependentUpon>201907290857494_addingmoduleOvertimeRequests1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.cs" />
+    <Compile Include="Migrations\201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.Designer.cs">
+      <DependentUpon>201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907301103245_addingmoduleApprovement.cs" />
+    <Compile Include="Migrations\201907301103245_addingmoduleApprovement.Designer.cs">
+      <DependentUpon>201907301103245_addingmoduleApprovement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Approvement.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\OvertimeRequest.cs" />
+    <Compile Include="Repositories\ApprovementRepository.cs" />
+    <Compile Include="Repositories\DepartmentRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IApprovementRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDepartmentRepository.cs" />
     <Compile Include="Repositories\Interfaces\IEmployeeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IOvertimeRequestRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRoleRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISiteRepository.cs" />
+    <Compile Include="Repositories\OvertimeRequestRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\SiteRepository.cs" />
+    <Compile Include="ViewModels\ApprovementVM.cs" />
+    <Compile Include="ViewModels\DepartmentVM.cs" />
     <Compile Include="ViewModels\EmployeeVM.cs" />
+    <Compile Include="ViewModels\OvertimeRequestVM.cs" />
     <Compile Include="ViewModels\RoleVM.cs" />
     <Compile Include="ViewModels\SiteVM.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\OvertimeType.cs" />
-    <Compile Include="Repositories\DepartmentRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IDepartmentRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IOvertimeTypeRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
-    <Compile Include="Repositories\OvertimeTypeRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="ViewModels\DepartmentVM.cs" />
-    <Compile Include="ViewModels\OvertimeTypeVM.cs" />
-    <Compile Include="ViewModels\UserVM.cs" />
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -160,8 +173,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Site.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -177,9 +188,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201907260048514_addingUserOvertimeTypeDepartment.resx">
-      <DependentUpon>201907260048514_addingUserOvertimeTypeDepartment.cs</DependentUpon>
-        <EmbeddedResource Include="Migrations\201907241002502_addmodulesite.resx">
+    <EmbeddedResource Include="Migrations\201907241002502_addmodulesite.resx">
       <DependentUpon>201907241002502_addmodulesite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907250948399_addingemployee.resx">
@@ -193,6 +202,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907260858102_updateforeignEmployee1.resx">
       <DependentUpon>201907260858102_updateforeignEmployee1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907281159562_addingmoduledepartment.resx">
+      <DependentUpon>201907281159562_addingmoduledepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907281413569_addingmoduleOvertimeRequest.resx">
+      <DependentUpon>201907281413569_addingmoduleOvertimeRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290146160_updatedatabaseEmployee.resx">
+      <DependentUpon>201907290146160_updatedatabaseEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290420243_updatedatabaseEmployeeManager.resx">
+      <DependentUpon>201907290420243_updatedatabaseEmployeeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290730049_addingmoduleOvertimeRequests.resx">
+      <DependentUpon>201907290730049_addingmoduleOvertimeRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290857494_addingmoduleOvertimeRequests1.resx">
+      <DependentUpon>201907290857494_addingmoduleOvertimeRequests1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.resx">
+      <DependentUpon>201907291004329_addingmoduleOvertimeRequestsRenameDateOverTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301103245_addingmoduleApprovement.resx">
+      <DependentUpon>201907301103245_addingmoduleApprovement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

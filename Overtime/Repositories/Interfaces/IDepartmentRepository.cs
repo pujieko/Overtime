@@ -19,4 +19,3 @@ namespace Overtime.Repositories.Interfaces
         bool Delete(int id);
     }
 }
-

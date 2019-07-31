@@ -1,5 +1,4 @@
 ﻿using Overtime.Core;
-
 using Overtime.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,6 @@ namespace Overtime.Models
 {
     public class OvertimeRequest : BaseModel
     {
-
         public OvertimeRequest() { } // constructor
         public OvertimeRequest(OvertimeRequestVM overtimerequestVM)
         {
@@ -33,4 +31,3 @@ namespace Overtime.Models
         public Site Site { get; set; }
     }
 }
-

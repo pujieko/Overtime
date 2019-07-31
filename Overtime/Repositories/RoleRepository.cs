@@ -13,24 +13,40 @@ namespace Overtime.Repositories
 {
     public class RoleRepository : IRoleRepository
     {
-        bool status = false; //Membuat variable status false
-        //Membuat Objek
+        bool status = false;
+        // constructor
         ApplicationContext applicationContext = new ApplicationContext();
-
-
-        public List<Role> Get()//Get all
+        public bool Delete(int id)
         {
-            var get = applicationContext.Roles.Where(x => x.IsDelete == false).ToList();
-            return get; //Contextnya,nama table, kondisi
+            var get = Get(id);
+            if(get != null)
+            {
+                get.Delete(); // parsing untuk didelete
+                applicationContext.Entry(get).State = EntityState.Modified;
+                var result = applicationContext.SaveChanges();
+                return result > 0;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
-        public List<Role> Get(string value)//Get by Value String
+        public List<Role> Get()
         {
-            var get = applicationContext.Roles.Where(x => (x.Name.Contains(value) || x.Id.ToString().Contains(value)) && x.IsDelete == false).ToList();
+            // context dulu, name table, kondisi
+            var get = applicationContext.Roles.Where(x => x.IsDelete == false).ToList();
             return get;
         }
 
-        public Role Get(int id)//Get by Id
+        public List<Role> Get(string value)
+        {
+            var get = applicationContext.Roles.Where(x => x.IsDelete == false && (x.Id.ToString().Contains(value) || x.Name.Contains(value))).ToList();
+            return get;
+        }
+
+        public Role Get(int id)
         {
             var get = applicationContext.Roles.SingleOrDefault(x => x.IsDelete == false && x.Id == id);
             return get;
@@ -46,35 +62,20 @@ namespace Overtime.Repositories
 
         public bool Update(int id, RoleVM roleVM)
         {
-            //Untuk mengambil data By Id
+            // untuk mengambil data by Id terlebih dahulu sebelum update data
             var get = Get(id);
-            if (get != null)
+            if(get != null)
             {
                 get.Update(roleVM);
                 applicationContext.Entry(get).State = EntityState.Modified;
                 var result = applicationContext.SaveChanges();
                 return result > 0;
-
             }
             else
             {
                 return false;
             }
-        }
-        public bool Delete(int id)
-        {
-            var get = Get(id);
-            if (get != null)
-            {
-                get.Delete(); // Parsing
-                applicationContext.Entry(get).State = EntityState.Modified;
-                var result = applicationContext.SaveChanges();
-                return result > 0;
-            }
-            else
-            {
-                return false;
-            }
+           
         }
     }
 }
