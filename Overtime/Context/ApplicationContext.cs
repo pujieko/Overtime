@@ -15,8 +15,6 @@ namespace Overtime.Context
 
         public DbSet<Site> Sites { get; set; } 
 
-        public DbSet<Role> Roles { get; set; }
-
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<Department> Departments { get; set; }
